@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('https://asset.gecdesigns.com/img/wallpapers/blue-purple-beautiful-scenery-ultra-hd-wallpaper-4k-sr10012421-1706505497434-cover.webp'); /* Imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-attachment: fixed; /* Imagem de fundo fixa durante o rolar */
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.3); /* Ajustando a opacidade para 30% */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px); /* Adiciona um desfoque de fundo */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Borda suave, se necessário */
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff; /* Cor do título para contraste */
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #fff; /* Cor da label para contraste */
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 10px 10px 10px 35px; /* Espaço à esquerda para o ícone */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}

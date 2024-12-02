@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Web Loja</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Dashboard!</h1>
+        <p>Você fez login com sucesso!</p>
+        <button onclick="logout()">Sair</button>
+    </div>
+
+    <script>
+        // Função para verificar se o usuário está logado
+        function checkLogin() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                alert('Você precisa estar logado para acessar esta página.');
+                window.location.href = 'index.html'; // Redireciona para o login se não estiver logado
+            } else {
+                document.querySelector('h1').textContent = `Bem-vindo, ${user.email}!`; // Exibe o e-mail do usuário
+            }
+        }
+
+        // Função para fazer logout (limpar dados de login e redirecionar para a página de login)
+        function logout() {
+            localStorage.removeItem('user'); // Remove o usuário do localStorage
+            window.location.href = 'index.html'; // Redireciona para a página de login
+        }
+
+        window.onload = checkLogin; // Verifica se o usuário está logado ao carregar a página
+    </script>
+</body>
+</html>

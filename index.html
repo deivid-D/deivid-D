@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro - Web Loja</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <!-- Formulário de Login -->
+            <div id="login-form">
+                <h2>Login</h2>
+                <form onsubmit="return login(event)">
+                    <div class="input-group">
+                        <label for="login-email">E-mail:</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Senha:</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit">Entrar</button>
+                    <p>Não tem uma conta? <a href="#" onclick="toggleForms()">Cadastre-se</a></p>
+                </form>
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div id="register-form" style="display: none;">
+                <h2>Cadastro</h2>
+                <form onsubmit="return register(event)">
+                    <div class="input-group">
+                        <label for="register-email">E-mail:</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="register-password">Senha:</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="register-confirm-password">Confirmar Senha:</label>
+                        <input type="password" id="register-confirm-password" required>
+                    </div>
+                    <button type="submit">Cadastrar</button>
+                    <p>Já tem uma conta? <a href="#" onclick="toggleForms()">Faça login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para alternar entre os formulários de login e cadastro
+        function toggleForms() {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            }
+        }
+
+        // Função de login
+        function login(event) {
+            event.preventDefault(); // Impede o envio real do formulário
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Exemplo de validação simples
+            if (email === '' || password === '') {
+                alert('Por favor, preencha todos os campos.');
+                return false;
+            }
+            
+            // Aqui você pode adicionar lógica para validar o login (ex: através de API)
+            localStorage.setItem('user', JSON.stringify({ email, password })); // Salva os dados no localStorage
+            window.location.href = 'dashboard.html'; // Redireciona para o dashboard após login
+            return false; // Evita o envio do formulário real
+        }
+
+        // Função de cadastro
+        function register(event) {
+            event.preventDefault(); // Impede o envio real do formulário
+            
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            // Valida se os campos foram preenchidos
+            if (email === '' || password === '' || confirmPassword === '') {
+                alert('Por favor, preencha todos os campos.');
+                return false;
+            }
+            
+            // Verifica se as senhas são iguais
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem!');
+                return false;
+            }
+            
+            // Salva as informações do usuário no localStorage
+            localStorage.setItem('user', JSON.stringify({ email, password }));
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = 'dashboard.html'; // Redireciona para o dashboard após o cadastro
+            return false; // Evita o envio do formulário real
+        }
+    </script>
+</body>
+</html>
